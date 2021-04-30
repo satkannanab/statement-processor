@@ -1,0 +1,44 @@
+{
+  "customerStatments": [
+    {
+      "reference": "158338",
+      "accountNumber": "NL91RABO0315273637",
+      "description": "Tickets for Vincent King",
+      "startBalance": 12.76,
+      "mutation": -39.5,
+      "endBalance": -26.74
+    },
+    {
+      "reference": "108230",
+      "accountNumber": "NL32RABO0195610843",
+      "description": "Flowers for Willem Bakker",
+      "startBalance": 43.63,
+      "mutation": -12.18,
+      "endBalance": 31.45
+    },
+    {
+      "reference": "196213",
+      "accountNumber": "NL32RABO0195610843",
+      "description": "Subscription from Rik de Vries",
+      "startBalance": 30.36,
+      "mutation": -35.1,
+      "endBalance": -4.74
+    },
+    {
+      "reference": "109762",
+      "accountNumber": "NL93ABNA0585619023",
+      "description": "Flowers from Rik de Vries",
+      "startBalance": 47.45,
+      "mutation": 17.82,
+      "endBalance": 65.27
+    },
+    {
+      "reference": "163590",
+      "accountNumber": "NL27SNSB0917829871",
+      "description": "Tickets from Rik Bakker",
+      "startBalance": 105.11,
+      "mutation": 29.87,
+      "endBalance": 134.98
+    }
+  ]
+}
