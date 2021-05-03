@@ -27,7 +27,7 @@ public class StatementProcessorServiceImpl implements StatementProcessorService 
 
   @Override
   public CustomerStatements processStatement(MultipartFile file) {
-    CustomerStatements statements = customerStatementFileHandler.fileProessor(file);
+    CustomerStatements statements = customerStatementFileHandler.processFile(file);
     BeanPropertyBindingResult errors = new BeanPropertyBindingResult(statements, "customerStatements");
     customerStatementValidator.validate(statements, errors);
     if (errors.hasErrors()) {

@@ -1,10 +1,10 @@
-
 package com.statement.processor.app.parser.service.impl;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,9 +27,13 @@ public class StatementCsvFileParserService implements FileParserService {
   @Override
   public List<CustomerStatement> fileProessor(InputStream inputStream) {
     // parse the data from csv and add it to a dto as a raw data
-    List<StatementCsvData> csvStatementRecords;
-    csvStatementRecords = new CsvToBeanBuilder<StatementCsvData>(new BufferedReader(new InputStreamReader(inputStream))).withOrderedResults(true)
-        .withType(StatementCsvData.class).build().parse();
+    List<StatementCsvData> csvStatementRecords = new ArrayList<>();
+    try {
+      csvStatementRecords = new CsvToBeanBuilder<StatementCsvData>(new BufferedReader(new InputStreamReader(inputStream))).withOrderedResults(true)
+          .withType(StatementCsvData.class).build().parse();
+    } catch (RuntimeException exception) {
+      throw new FileProcesException("Error while parsing the CSV file, please check the file and its values", exception);
+    }
     return convert(csvStatementRecords);
   }
 

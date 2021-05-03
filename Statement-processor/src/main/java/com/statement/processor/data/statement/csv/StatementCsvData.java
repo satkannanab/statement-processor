@@ -1,16 +1,21 @@
-
 package com.statement.processor.data.statement.csv;
 
 import com.opencsv.bean.CsvBindByName;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Statement data specifically for CSV
  *
  * @author satheesh.arunachalam
  */
+@Builder
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StatementCsvData {
   @CsvBindByName(column = "Reference")
   private String reference;
@@ -29,4 +34,5 @@ public class StatementCsvData {
 
   @CsvBindByName(column = "End Balance")
   private String endBalance;
+
 }

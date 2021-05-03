@@ -1,4 +1,3 @@
-
 package com.statement.processor.data.statement;
 
 import java.io.Serializable;

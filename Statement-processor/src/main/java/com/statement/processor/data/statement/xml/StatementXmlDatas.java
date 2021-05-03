@@ -1,4 +1,3 @@
-
 package com.statement.processor.data.statement.xml;
 
 import java.util.List;
@@ -21,4 +20,12 @@ public class StatementXmlDatas {
   @JacksonXmlElementWrapper(useWrapping = false)
   @JacksonXmlProperty(localName = "record")
   private List<StatementXmlData> statements;
+
+  public StatementXmlDatas() {
+    // nothing to do. empty constructor is required by jackson
+  }
+
+  public StatementXmlDatas(List<StatementXmlData> statements) {
+    this.statements = statements;
+  }
 }

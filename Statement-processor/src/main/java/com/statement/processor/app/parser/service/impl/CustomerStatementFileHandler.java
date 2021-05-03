@@ -34,16 +34,20 @@ public class CustomerStatementFileHandler {
    * @param file of type MultipartFile.
    * @return list of CustomerStatement.
    */
-  public CustomerStatements fileProessor(MultipartFile file) {
+  public CustomerStatements processFile(MultipartFile file) {
     List<CustomerStatement> statements = new ArrayList<>();
     try {
       InputStream inputStream = file.getInputStream();
       String fileName = file.getOriginalFilename();
 
-      if (fileName.endsWith("csv")) {
-        statements = statementCsvFileParserService.fileProessor(inputStream);
-      } else if (fileName.endsWith("xml")) {
-        statements = statementXmlFileParserService.fileProessor(inputStream);
+      if (fileName != null) {
+        if (fileName.endsWith("csv")) {
+          statements = statementCsvFileParserService.fileProessor(inputStream);
+        } else if (fileName.endsWith("xml")) {
+          statements = statementXmlFileParserService.fileProessor(inputStream);
+        }
+      } else {
+        throw new FileProcesException("Original file name not given to process the file");
       }
     } catch (IOException e) {
       throw new FileProcesException(String.format("Unable to process the file with name %s", file.getOriginalFilename()), e);
@@ -52,7 +56,7 @@ public class CustomerStatementFileHandler {
     return CustomerStatements.builder().customerStatments(statements).build();
   }
 
-  protected String getMediaType(MultipartFile file) {
+  private String getMediaType(MultipartFile file) {
     return file.getContentType();
   }
 }
